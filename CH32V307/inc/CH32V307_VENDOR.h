@@ -28,9 +28,7 @@ typedef struct
     __I  uint16_t ESIG_FLACAP;
          uint16_t :16;
          uint32_t :32;
-    __I  uint32_t ESIG_UNIID1;
-    __I  uint32_t ESIG_UNIID2;
-    __I  uint32_t ESIG_UNIID3;
+    __I  uint32_t ESIG_UNIID[3];
 } ESIG_TypeDef;
 
 #define ESIG        ((ESIG_TypeDef *)EXTEND_BASE)

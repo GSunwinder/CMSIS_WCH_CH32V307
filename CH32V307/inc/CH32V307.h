@@ -25,19 +25,19 @@ extern "C" {
 #include "CH32V307_ADC.h"
 #include "CH32V307_AFIO.h"
 #include "CH32V307_DMA.h"
-//#include "CH32V003_EXTEN.h"
+#include "CH32V307_EXTEN.h"
 #include "CH32V003_EXTI.h"
-//#include "CH32V003_FO.h"
+#include "CH32V003_FO.h"
 #include "CH32V307_GPIO.h"
 #include "CH32V307_I2C.h"
 #include "CH32V307_IRQ.h"
 #include "CH32V307_IWDG.h"
-//#include "CH32V003_MISC.h"
 #include "CH32V307_PWR.h"
 #include "CH32V307_RCC.h"
 #include "CH32V307_SPI.h"
 #include "CH32V307_TIM.h"
 #include "CH32V307_USART.h"
+#include "CH32V307_VENDOR.h"
 #include "CH32V307_WWDG.h"
 
 //==============================================================================
@@ -55,8 +55,10 @@ extern "C" {
 #define CODE_FLASH_BASE     (FLASH_BASE + 0x08000000)
 #define SYSTEM_FLASH_BASE   (FLASH_BASE + 0x1FFF8000) // Boot flash memory (28 kbytes)
 #define VENDOR_BASE         (FLASH_BASE + 0x1FFFF700)
-#define ESIG_BASE           (FLASH_BASE + 0x1FFFF7E0) // Electronic Signature
 #define OB_BASE             (FLASH_BASE + 0x1FFFF800) // Flash Option Bytes base address
+
+#define FEATURE_BASE        (VENDOR_BASE + 0x00D0)
+#define ESIG_BASE           (VENDOR_BASE + 0x00E0) // Electronic Signature
 
 // Peripheral region
 #define APB1PERIPH_BASE     (PERIPH_BASE + 0x00000)
