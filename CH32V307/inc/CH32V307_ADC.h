@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #include "CH32V307.h"
-//#include "CH32V307_TKEY.h"
 
 typedef struct
 {
@@ -127,14 +126,14 @@ typedef struct
 #define ADC_ADON                ((uint32_t)0x00000001) // A/D Converter ON / OFF
 
 //=================  Bit definition for ADC_SAMPTR1 register  ==================
-#define ADC_SMP17               ((uint32_t)0x00E00000) // SMP17[2:0] bits (Channel 7 Sample time selection)
-#define ADC_SMP16               ((uint32_t)0x001C0000) // SMP16[2:0] bits (Channel 6 Sample time selection)
-#define ADC_SMP15               ((uint32_t)0x00038000) // SMP15[2:0] bits (Channel 5 Sample time selection)
-#define ADC_SMP14               ((uint32_t)0x00007000) // SMP14[2:0] bits (Channel 4 Sample time selection)
-#define ADC_SMP13               ((uint32_t)0x00000E00) // SMP13[2:0] bits (Channel 3 Sample time selection)
-#define ADC_SMP12               ((uint32_t)0x000001C0) // SMP12[2:0] bits (Channel 2 Sample time selection)
-#define ADC_SMP11               ((uint32_t)0x00000038) // SMP11[2:0] bits (Channel 1 Sample time selection)
-#define ADC_SMP10               ((uint32_t)0x00000007) // SMP10[2:0] bits (Channel 0 Sample time selection)
+#define ADC_SMP17               ((uint32_t)0x00E00000) // SMP17[2:0] bits (Channel 17 Sample time selection)
+#define ADC_SMP16               ((uint32_t)0x001C0000) // SMP16[2:0] bits (Channel 16 Sample time selection)
+#define ADC_SMP15               ((uint32_t)0x00038000) // SMP15[2:0] bits (Channel 15 Sample time selection)
+#define ADC_SMP14               ((uint32_t)0x00007000) // SMP14[2:0] bits (Channel 14 Sample time selection)
+#define ADC_SMP13               ((uint32_t)0x00000E00) // SMP13[2:0] bits (Channel 13 Sample time selection)
+#define ADC_SMP12               ((uint32_t)0x000001C0) // SMP12[2:0] bits (Channel 12 Sample time selection)
+#define ADC_SMP11               ((uint32_t)0x00000038) // SMP11[2:0] bits (Channel 11 Sample time selection)
+#define ADC_SMP10               ((uint32_t)0x00000007) // SMP10[2:0] bits (Channel 10 Sample time selection)
 
 //=================  Bit definition for ADC_SAMPTR2 register  ==================
 #define ADC_SMP9                ((uint32_t)0x38000000) // SMP9[2:0] bits (Channel 9 Sample time selection)
@@ -148,14 +147,14 @@ typedef struct
 #define ADC_SMP1                ((uint32_t)0x00000038) // SMP1[2:0] bits (Channel 1 Sample time selection)
 #define ADC_SMP0                ((uint32_t)0x00000007) // SMP0[2:0] bits (Channel 0 Sample time selection)
 
-#define ADC_1H_ccls             ((uint32_t)0x00000000)
-#define ADC_7H_ccls             ((uint32_t)0x00000001)
-#define ADC_13H_ccls            ((uint32_t)0x00000002)
-#define ADC_28H_ccls            ((uint32_t)0x00000003)
-#define ADC_41H_ccls            ((uint32_t)0x00000004)
-#define ADC_55H_ccls            ((uint32_t)0x00000005)
-#define ADC_71H_ccls            ((uint32_t)0x00000006)
-#define ADC_239H_ccls           ((uint32_t)0x00000007)
+#define ADC_1H_ccls             ((uint32_t)0x00000000) // 1.5 cycles
+#define ADC_7H_ccls             ((uint32_t)0x00000001) // 7.5 cycles
+#define ADC_13H_ccls            ((uint32_t)0x00000002) // 13.5 cycles
+#define ADC_28H_ccls            ((uint32_t)0x00000003) // 28.5 cycles
+#define ADC_41H_ccls            ((uint32_t)0x00000004) // 41.5 cycles
+#define ADC_55H_ccls            ((uint32_t)0x00000005) // 55.5 cycles
+#define ADC_71H_ccls            ((uint32_t)0x00000006) // 71.5 cycles
+#define ADC_239H_ccls           ((uint32_t)0x00000007) // 239.5 cycles
 // with set ADC_SMP_SELx bit
 #define ADC_2H_ccls             ((uint32_t)0x00000004)
 #define ADC_3H_ccls             ((uint32_t)0x00000005)
@@ -203,7 +202,7 @@ typedef struct
 #define ADC_JSQ2                ((uint32_t)0x000003E0) // JSQ2[4:0] bits (2nd conversion in injected sequence)
 #define ADC_JSQ1                ((uint32_t)0x0000001F) // JSQ1[4:0] bits (1st conversion in injected sequence)
 
-//==========  Bit definition for ADC_ADC_IDATAR[1, 2, 3, 4] register  ==========
+//============  Bit definition for ADC_IDATAR[1, 2, 3, 4] register  ============
 #define ADC_IDATAR_JDATA        ((uint32_t)0x0000FFFF) // Injected data
 
 //===================  Bit definition for ADC_RDATAR register  =================

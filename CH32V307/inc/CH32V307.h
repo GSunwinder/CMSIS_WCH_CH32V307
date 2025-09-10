@@ -26,8 +26,8 @@ extern "C" {
 #include "CH32V307_AFIO.h"
 #include "CH32V307_BKP.h"
 //#include "CH32V307_CAN.h"
-//#include "CH32V307_CRC.h"
-//#include "CH32V307_DAC.h"
+#include "CH32V307_CRC.h"
+#include "CH32V307_DAC.h"
 #include "CH32V307_DMA.h"
 //#include "CH32V307_DVP.h"
 //#include "CH32V307_ETH.h"
@@ -39,7 +39,7 @@ extern "C" {
 #include "CH32V307_I2C.h"
 #include "CH32V307_IRQ.h"
 #include "CH32V307_IWDG.h"
-//#include "CH32V307_OPA.h"
+#include "CH32V307_OPA.h"
 #include "CH32V307_PWR.h"
 #include "CH32V307_RCC.h"
 //#include "CH32V307_RNG.h"
@@ -47,7 +47,7 @@ extern "C" {
 //#include "CH32V307_SDIO.h"
 #include "CH32V307_SPI.h"
 #include "CH32V307_TIM.h"
-//#include "CH32V307_TKEY.h"
+#include "CH32V307_TKEY.h"
 #include "CH32V307_USART.h"
 //#include "CH32V307_USBFS_OTGFS.h"
 //#include "CH32V307_USBHD.h"
@@ -114,7 +114,9 @@ extern "C" {
 #define GPIOD_BASE          (APB2PERIPH_BASE + 0x1400)
 #define GPIOE_BASE          (APB2PERIPH_BASE + 0x1800)
 #define ADC1_BASE           (APB2PERIPH_BASE + 0x2400)
+#define TKEY1_BASE          (APB2PERIPH_BASE + 0x2400)
 #define ADC2_BASE           (APB2PERIPH_BASE + 0x2800)
+#define TKEY2_BASE          (APB2PERIPH_BASE + 0x2800)
 #define TIM1_BASE           (APB2PERIPH_BASE + 0x2C00)
 #define SPI1_BASE           (APB2PERIPH_BASE + 0x3000)
 #define TIM8_BASE           (APB1PERIPH_BASE + 0x3400)
@@ -149,6 +151,7 @@ extern "C" {
 #define CRC_BASE            (AHBPERIPH_BASE + 0x3000)
 #define USBHS_BASE          (AHBPERIPH_BASE + 0x3400)
 #define EXTEND_BASE         (AHBPERIPH_BASE + 0x3800)
+#define OPA_BASE            (AHBPERIPH_BASE + 0x3800)
 #define TRNG_BASE           (AHBPERIPH_BASE + 0x3C00)
 #define ETH_BASE            (AHBPERIPH_BASE + 0x8000)
 #define OTGFS_BASE          (AHBPERIPH_BASE + 0x10000000)
