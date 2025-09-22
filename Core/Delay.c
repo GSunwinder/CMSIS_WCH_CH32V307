@@ -38,7 +38,7 @@ void Delay_us(uint32_t delay)
     uint64_t start, stop;
 
     start = (uint64_t)SysTick->CNTL;
-    start |= SysTick->CNTH << 32;
+    start |= (uint64_t)SysTick->CNTH << 32;
     SysTick->SR = 0;
     stop = start + ((delay - 1) * systick_us);
     SysTick->CMPLR = (uint32_t)(stop & 0x00000000FFFFFFFF);

@@ -56,9 +56,9 @@ typedef struct
 #define _10MHz  ((uint32_t)0x1)
 #define _50MHz  ((uint32_t)0x3)
 
-?#define GPIO_MASK(PortNumber)                   ((uint32_t)(0x0F << (PortNumber * 4)))
-?#define GPI_CFG(PortNumber, TypeInput)          ((uint32_t)(TypeInput << (PortNumber * 4)))
-?#define GPO_CFG(PortNumber, TypeOutput, Freq)   ((uint32_t)((TypeOutput | Freq) << (PortNumber * 4)))
+//?#define GPIO_MASK(PortNumber)                   ((uint32_t)(0x0F << (PortNumber * 4)))
+//?#define GPI_CFG(PortNumber, TypeInput)          ((uint32_t)(TypeInput << (PortNumber * 4)))
+//?#define GPO_CFG(PortNumber, TypeOutput, Freq)   ((uint32_t)((TypeOutput | Freq) << (PortNumber * 4)))
 
 //==================  Bit definition for GPIO_INDR register  ===================
 #define GPIO_INDR_IDR15     ((uint32_t)0x00008000) // Port input data, bit 15

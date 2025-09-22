@@ -1,5 +1,5 @@
 //========================================================  (C) COPYRIGHT  =====
-// File Name   : CH32V307.ld
+// File Name   : CH32V307_ROM192.ld
 // Version     : V1.0
 // Date        : 17-09-2025
 // Author      : Sunwinder

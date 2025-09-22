@@ -151,11 +151,11 @@ static void SetSysClock(void)
 static void SetSysClockTo_8MHz_HSI(void)
 {
     /* Flash 0 wait state */
-    FLASH->ACTLR &= (uint32_t)((uint32_t)~FLASH_ACTLR_LATENCY);
-    FLASH->ACTLR |= (uint32_t)FLASH_ACTLR_LATENCY_0;
+    //FLASH->ACTLR &= (uint32_t)((uint32_t)~FLASH_ACTLR_LATENCY);
+    //FLASH->ACTLR |= (uint32_t)FLASH_ACTLR_LATENCY_0;
 
     /* HCLK = SYSCLK = APB1 */
-    RCC->CFGR0 |= (uint32_t)RCC_HPRE_DIV3;
+    //RCC->CFGR0 |= (uint32_t)RCC_HPRE_DIV3;
 }
 
 #elif defined SYSCLK_FREQ_24MHZ_HSI
@@ -424,7 +424,7 @@ void SystemInit (void)
     // Setup default clocks
     tmp = RCC->CFGR0;
     tmp &= ~(RCC_CFGR0_MCO | RCC_PLLSRC | RCC_ADCPRE | RCC_HPRE | RCC_SW);
-    tmp |= RCC_MCO_NOCLOCK | RCC_PLLSRC_HSIx2 | RCC_ADCPRE_DIV128 | RCC_HPRE_DIV1 | RCC_SW_HSI;
+    //tmp |= RCC_MCO_NOCLOCK | RCC_PLLSRC_HSIx2 | RCC_ADCPRE_DIV128 | RCC_HPRE_DIV1 | RCC_SW_HSI;
     RCC->CFGR0 = tmp;
 
     tmp = RCC->CTLR;
@@ -436,22 +436,22 @@ void SystemInit (void)
 
     // Reset peripheral
     tmp = RCC->APB1PRSTR;
-    tmp |= /*RCC_PWRRST |*/ RCC_I2CRST | RCC_WWDGRST | RCC_TIM2RST; // PWRRST halt MCU!!!
+    //tmp |= /*RCC_PWRRST |*/ RCC_I2CRST | RCC_WWDGRST | RCC_TIM2RST; // PWRRST halt MCU!!!
     RCC->APB1PRSTR = tmp;
-    tmp &= ~(RCC_PWRRST | RCC_I2CRST | RCC_WWDGRST | RCC_TIM2RST);
+    //tmp &= ~(RCC_PWRRST | RCC_I2CRST | RCC_WWDGRST | RCC_TIM2RST);
     RCC->APB1PRSTR = tmp;
 
     tmp = RCC->APB2PRSTR;
-    tmp |= RCC_USARTRST | RCC_SPIRST | RCC_TIM1RST | RCC_ADCRST |
-           RCC_IOPDRST | RCC_IOPCRST | RCC_IOPARST | RCC_AFIORST;
+    //tmp |= RCC_USARTRST | RCC_SPIRST | RCC_TIM1RST | RCC_ADCRST |
+    //       RCC_IOPDRST | RCC_IOPCRST | RCC_IOPARST | RCC_AFIORST;
     RCC->APB2PRSTR = tmp;
-    tmp &= ~(RCC_USARTRST | RCC_SPIRST | RCC_TIM1RST | RCC_ADCRST |
-             RCC_IOPDRST | RCC_IOPCRST | RCC_IOPARST | RCC_AFIORST);
+    //tmp &= ~(RCC_USARTRST | RCC_SPIRST | RCC_TIM1RST | RCC_ADCRST |
+    //         RCC_IOPDRST | RCC_IOPCRST | RCC_IOPARST | RCC_AFIORST);
     RCC->APB2PRSTR = tmp;
 
     SetSysClock();
 
     /* Enable interrupt nesting and hardware stack */
     __asm("li t0, %0\n\t"
-          "csrw %1, t0" : : "i"(INTSYSCR_ENESTEN | INTSYSCR_HWSTKEN), "i"(intsyscr) : );
+          "csrw %1, t0" : : "i"(INTSYSCR_INESTEN | INTSYSCR_HWSTKEN), "i"(intsyscr) : );
 }
