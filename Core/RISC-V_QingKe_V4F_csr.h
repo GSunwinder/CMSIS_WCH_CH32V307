@@ -74,13 +74,18 @@
 
 #define MSTATUS_FS          ((uint32_t)0x00006000) // Floating-point unit status
 #define MSTATUS_FS_OFF      ((uint32_t)0x00000000) // OFF
-#define MSTATUS_FS_Initial  ((uint32_t)0x00002000) // Initial
-#define MSTATUS_FS_Clean    ((uint32_t)0x00004000) // Clean
-#define MSTATUS_FS_Dirty    ((uint32_t)0x00006000) // Dirty
+#define MSTATUS_FS_INITIAL  ((uint32_t)0x00002000) // Initial
+#define MSTATUS_FS_CLEAN    ((uint32_t)0x00004000) // Clean
+#define MSTATUS_FS_DIRTY    ((uint32_t)0x00006000) // Dirty
 
 //===================  Bit definition for misa register  =======================
 #define MISA_MXL            ((uint32_t)0xC0000000) // Machine word length
 #define MISA_EXT            ((uint32_t)0x03FFFFFF) // Instruction set extensions
+
+//===================  Bit definition for mtvec register  ======================
+#define MTVEC_BASEADDR      ((uint32_t)0xFFFFFFFC) // Interrupt vector table address
+#define MTVEC_MODE1         ((uint32_t)0x00000002) // Identifies patterns
+#define MTVEC_MODE0         ((uint32_t)0x00000001) // Entry address mode
 
 //===================  Bit definition for mcause register  =====================
 #define MCAUSE_INT          ((uint32_t)0x80000000) // Interrupt indication field
@@ -163,7 +168,10 @@ RV_STATIC_INLINE uint32_t __get_##reg(void) \
 
 #define __SET_CSR(reg) \
 RV_STATIC_INLINE void __set_##reg(uint32_t value) \
-{ __asm volatile("csrw %0, %1" : : "n"(reg), "r"(value) : ); }
+{ \
+    __asm ("li t0, %0" : : "i"(value) : ); \
+    __asm ("csrw %0, t0" : : "i"(corecfgr) : ); \
+}
 
 //===================  Function for access to CSR Registers  ===================
 __GET_CSR(mstatus)
@@ -181,6 +189,7 @@ __SET_CSR(mcause)
 
 __GET_CSR(intsyscr)
 __SET_CSR(intsyscr)
+__SET_CSR(corecfgr)
 
 #ifdef __cplusplus
 }
